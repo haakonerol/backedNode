@@ -105,6 +105,4 @@ module.exports.userController = {
             throw new Error(' Not Found. ')
         }
     }
-
-
 }
