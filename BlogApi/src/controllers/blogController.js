@@ -94,8 +94,11 @@ module.exports.blogPostController = {
 
     create: async (req, res) => {
 
+        req.body.userId = req.user?._id
+
+        req.body.content += ` - Author: ${req.user?.firstName} ${req.user?.lastName}` 
+
         const data = await BlogPost.create(req.body);
-        console.log(data);
 
         res.status(201).send({
             error: false,

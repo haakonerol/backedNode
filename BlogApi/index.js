@@ -29,10 +29,14 @@ app.use(session({
 }))
 /* ------------------------------------------------------------------ */
 
+app.use(require('./src/middlewares/userControl')) // to check session data
+/* ------------------------------------------------------------------ */
+
 app.all('/', (req, res) => {
     res.send({
-        session: req.session,
         message: 'Welcome to Blog API',
+        session: req.session,
+        user: req.user
     })
 })
 /* ------------------------------------------------------------------ */
@@ -42,6 +46,6 @@ app.use('/users', require('./src/routes/userRouter'))
 app.use('/blog', require('./src/routes/blogRouter'))
 
 /* ------------------------------------------------------------------ */
-app.use(require('./src/errorHandler'))
+app.use(require('./src/middlewares/errorHandler'))
 
 app.listen(PORT, () => console.log('Running: http://127.0.0.1:'+ PORT))

@@ -16,6 +16,7 @@ module.exports.authController = {
 
             // const user = await User.findOne({email: email})
             const user = await User.findOne({email})
+
             if(user){
                 if(user.password == passwordEncrypt(password)){
 
@@ -32,7 +33,7 @@ module.exports.authController = {
                    res.status(200).send({
                     error: false,
                     message: 'Login: OK',
-                    user
+                    user //* this user is from line:18
                    })
 
                 }else{
