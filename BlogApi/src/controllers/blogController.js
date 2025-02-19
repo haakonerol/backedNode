@@ -73,8 +73,6 @@ module.exports.blogCategoryController = {
             throw new Error(' Not Found. ')
         }
     }
-
-
 }
 
 /* ------------------------------------------------------------------ */
