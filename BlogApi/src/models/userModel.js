@@ -16,7 +16,14 @@ const UserSchema = new mongoose.Schema({
     password:{
         type: String,
         trim: true,
-        required: true,
+        required: [true, 'Password is required.'],
+        validate: {
+            validator: function(password) {
+                return password && password.trim() !== '';
+            },
+            message: 'Password cannot be empty.'
+        }
+           
     },
     firstName: {
         type: String,

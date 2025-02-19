@@ -10,19 +10,26 @@ const userEmailAndPasswordValidation = (data) => {
 
     // email control with regex
     const isEmailValid = data.email ? /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(data.email) : true;
-
+    
     if(isEmailValid){
-        const isPasswordvalid = data.password ? /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/.test(data.password) : true;
 
-        if(isPasswordvalid){
+        if(data.password && data.password !== ''){
+            const isPasswordvalid =  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/.test(data.password);
 
-            data.password = passwordEncrypt(data.password)
-            return data;
+            if(isPasswordvalid){
+            
+                data.password = passwordEncrypt(data.password)
+                
+                return data;
+    
+            }else{
+                throw new Error('Password is not validated.')
+            }
 
         }else{
-            throw new Error('Password is not validated.')
+            throw new Error('Password cannot be empty.');
         }
-
+       
     }else{
         throw new Error('Email is not validated.')
     };
@@ -69,10 +76,10 @@ module.exports.userController = {
     },
 
     update: async (req, res) => {
-
+        
         // const data = await User.updateOne({...filter}, {...data})
-        const data = await User.updateOne({_id: req.params.userId}, userEmailAndPasswordValidation(req.body))
-
+        const data = await User.updateOne({_id: req.params.userId}, userEmailAndPasswordValidation(req.body), { runValidators: true, })
+         
         res.status(202).send({
             error: false,
             result: data,
