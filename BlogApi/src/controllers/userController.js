@@ -42,10 +42,13 @@ module.exports.userController = {
 
     list: async (req, res) => {
 
-        const data = await User.find()
+        // const data = await User.find()
+        const data = await res.getModelList(User)
+
 
         res.status(200).send({
             error: false,
+            details: await res.getModelListDetails(User),
             result: data
         })
 

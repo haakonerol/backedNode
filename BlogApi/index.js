@@ -30,6 +30,7 @@ app.use(session({
 /* ------------------------------------------------------------------ */
 
 app.use(require('./src/middlewares/userControl')) // to check session data
+app.use(require('./src/middlewares/filterSearchSortPage')) // to handle queries
 /* ------------------------------------------------------------------ */
 
 app.all('/', (req, res) => {
@@ -49,3 +50,7 @@ app.use('/blog', require('./src/routes/blogRouter'))
 app.use(require('./src/middlewares/errorHandler'))
 
 app.listen(PORT, () => console.log('Running: http://127.0.0.1:'+ PORT))
+
+/* ------------------------------------------------------------------ */
+//! Syncronization (Once Run Only)
+// // require('./src/sync')()
