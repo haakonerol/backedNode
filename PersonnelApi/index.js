@@ -21,7 +21,7 @@ const HOST = process.env?.HOST || 'http://127.0.0.1'
 const { dbConnection, mongoose } = require('./src/config/dbConnection')
 /* ------------------------------------------------------------ */
 
-
+app.use('/departments', require('./src/routes/departmentRouter'))
 
 /* ------------------------------------------------------------ */
 dbConnection()
