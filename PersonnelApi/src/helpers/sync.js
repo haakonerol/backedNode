@@ -20,7 +20,7 @@ const departments = [
 const personnels = [
   {
     departmentId: "66952d66e1b780e7b49e8111",
-    username: "jdoe",
+    userName: "jdoe",
     password: "test1",
     firstName: "John",
     lastName: "Doe",
@@ -35,7 +35,7 @@ const personnels = [
   },
   {
     departmentId: "66952d66e1b780e7b49e8111",
-    username: "asmith",
+    userName: "asmith",
     password: "test1",
     firstName: "Alice",
     lastName: "Smith",
@@ -50,7 +50,7 @@ const personnels = [
   },
   {
     departmentId: "66952d66e1b780e7b49e8111",
-    username: "bjackson",
+    userName: "bjackson",
     password: "test1",
     firstName: "Bob",
     lastName: "Jackson",
@@ -65,7 +65,7 @@ const personnels = [
   },
   {
     departmentId: "66952d66e1b780e7b49e8111",
-    username: "clara",
+    userName: "clara",
     password: "hashedPassword4",
     firstName: "Clara",
     lastName: "Johnson",
@@ -80,7 +80,7 @@ const personnels = [
   },
   {
     departmentId: "669531665d670713409e2a4a",
-    username: "dsmith",
+    userName: "dsmith",
     password: "hashedPassword5",
     firstName: "David",
     lastName: "Smith",
@@ -95,7 +95,7 @@ const personnels = [
   },
   {
     departmentId: "669531665d670713409e2a4a",
-    username: "emily",
+    userName: "emily",
     password: "hashedPassword6",
     firstName: "Emily",
     lastName: "Brown",
@@ -110,7 +110,7 @@ const personnels = [
   },
   {
     departmentId: "669531ad5d670713409e2a55",
-    username: "frank",
+    userName: "frank",
     password: "hashedPassword7",
     firstName: "Frank",
     lastName: "Garcia",
@@ -125,7 +125,7 @@ const personnels = [
   },
   {
     departmentId: "669531ad5d670713409e2a55",
-    username: "george",
+    userName: "george",
     password: "hashedPassword8",
     firstName: "George",
     lastName: "Martinez",
@@ -140,7 +140,7 @@ const personnels = [
   },
   {
     departmentId: "669531ad5d670713409e2a55",
-    username: "hannah",
+    userName: "hannah",
     password: "hashedPassword9",
     firstName: "Hannah",
     lastName: "Wilson",
@@ -170,6 +170,7 @@ async function dataCreate() {
     isFirstAccount = false;
     await Personnel.create(personnel);
   }
+  console.log('* Data Created *');
 }
 
 module.exports = dataCreate;

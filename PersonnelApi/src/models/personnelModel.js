@@ -7,7 +7,7 @@ const { mongoose} = require('../config/dbConnection')
 
 const PersonnelSchema = new mongoose.Schema({
 
-    departmenid: {
+    departmentId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Department',
         required: true

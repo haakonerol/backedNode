@@ -13,8 +13,8 @@ module.exports = {
 
         res.status(200).send({
             error:false,
+            details: await res.getModelListDetails(Personnel),
             data,
-            details: await res.getModelListDetails(Personnel)
         })
     },
 
