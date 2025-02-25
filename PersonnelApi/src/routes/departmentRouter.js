@@ -15,3 +15,5 @@ router.route('/:id')
     .put(department.update)
     .patch(department.update)
     .delete(department.delete);   
+
+module.exports = router;    
