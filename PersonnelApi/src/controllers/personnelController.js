@@ -3,6 +3,32 @@
     EXPRESS - Personnel API
 -------------------------------------------------------------- */
 const Personnel = require('../models/personnelModel')
+const passwordEncrypt = require('../helpers/passwordEncrypt')
+/* ------------------------------------------------------------ */
+
+const checkEmailAndPassword = function(data){
+
+    // -- email validation:
+  const isEmailValid = data.email ? /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(data.email) : true
+
+  if(isEmailValid){
+
+    // -- password validation:
+    const isPasswordValid = (data.password && data.password.trim() !== '') ? /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/.test(data.password) : false
+    if(isPasswordValid){
+
+        data.password = passwordEncrypt(data.password)
+
+    }else{
+        throw new Error('Password is not valid.')
+    }
+  
+  }else{
+    throw new Error('Email is not valid.')
+  }
+}
+
+
 /* ------------------------------------------------------------ */
 
 module.exports = {
@@ -20,7 +46,7 @@ module.exports = {
 
     create: async (req, res)=> {
 
-        const data = await Personnel.create(req.body)
+        const data = await Personnel.create(checkEmailAndPassword(req.body))
 
         res.status(201).send({
             error: false,
@@ -40,7 +66,7 @@ module.exports = {
 
     update: async (req, res) => {
 
-        const data = await Personnel.updateOne({_id: req.params.id}, req.body)
+        const data = await Personnel.updateOne({_id: req.params.id}, checkEmailAndPassword(req.body), {runValidators:true})
 
         res.status(201).send({
             error: false,
