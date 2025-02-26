@@ -26,6 +26,8 @@ app.use(express.json())
 app.use(require('./src/middlewares/filterSortSearchPage'))
 /* ------------------------------------------------------------ */
 
+app.use('/auth', require('./src/routes/authRouter'))
+app.use('/tokens', require('./src/routes/tokenRouter'))
 app.use('/departments', require('./src/routes/departmentRouter'))
 app.use('/personnels', require('./src/routes/personnelRouter'))
 
