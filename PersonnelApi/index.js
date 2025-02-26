@@ -24,7 +24,17 @@ dbConnection()
 app.use(express.json())
 
 app.use(require('./src/middlewares/filterSortSearchPage'))
+app.use(require('./src/middlewares/authentication'))
 /* ------------------------------------------------------------ */
+app.all("/", (req, res) => {
+    res.send({
+      error: false,
+      message: "Welcome to PERSONNEL API",
+      // session: req.session,
+      // isLogin: req.isLogin,
+      user: req.user
+    });
+  });
 
 app.use('/auth', require('./src/routes/authRouter'))
 app.use('/tokens', require('./src/routes/tokenRouter'))
@@ -41,6 +51,6 @@ app.listen(PORT, () => console.log(`Running: ${HOST}: ${PORT}`))
 
 // sync: 
 //! Run one time only
-// const sync = require('./src/helpers/sync')
-// // sync()
+ const sync = require('./src/helpers/sync')
+// sync()
 /* ------------------------------------------------------------ */

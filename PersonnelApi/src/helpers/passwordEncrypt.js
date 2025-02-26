@@ -9,8 +9,7 @@ const crypto = require('node:crypto'),
         encType = 'sha512'
 
 module.exports = function(password){
-    return crypto.pbkdf2Sync(password, keyCode, loopCount, charCount, encType)
-                .toString('hex');
+    return crypto.pbkdf2Sync(password, keyCode, loopCount, charCount, encType).toString('hex');
 }
 
 /* ------------------------------------------------------------ */

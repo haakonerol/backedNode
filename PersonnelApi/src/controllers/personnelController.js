@@ -18,6 +18,7 @@ const checkEmailAndPassword = function(data){
     if(isPasswordValid){
 
         data.password = passwordEncrypt(data.password)
+        return data
 
     }else{
         throw new Error('Password is not valid.')
