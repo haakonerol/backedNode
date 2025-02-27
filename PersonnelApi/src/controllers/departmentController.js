@@ -53,4 +53,23 @@ module.exports = {
             data
         })
     },
+    personnels: async (req, res) => {
+        const Personnel = require("../models/personnelModel");
+    
+        const data = await res.getModelList(
+          Personnel,
+          { departmentId: req.params.id },
+          "departmentId",
+        );
+    
+        res.status(200).send({
+          error: false,
+          detail: await res.getModelListDetails(
+            Personnel,
+            { departmentId: req.params.id },
+            "departmentId",
+          ),
+          data,
+        });
+      },
 };
