@@ -23,8 +23,8 @@ const { dbConnection, mongoose } = require('./src/config/dbConnection')
 dbConnection()
 app.use(express.json())
 
-app.use(require('./src/middlewares/filterSortSearchPage'))
 app.use(require('./src/middlewares/authentication'))
+app.use(require('./src/middlewares/filterSortSearchPage'))
 /* ------------------------------------------------------------ */
 app.all("/", (req, res) => {
     res.send({

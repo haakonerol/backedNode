@@ -29,11 +29,11 @@ module.exports = {
                             token: passwordEncrypt(user._id+Date.now())
                         })
                     }
-                        res.status(200).send({
-                            error: false,
-                            token: tokenData.token,
-                            user
-                        })
+                    res.status(200).send({
+                        error: false,
+                        token: tokenData.token,
+                        user
+                    })
                     
 
                 }else{
@@ -56,6 +56,17 @@ module.exports = {
     },
 
     logout: async (req, res) => {
+
+        // if(req.user){
+        //     const data = await Token.deleteOne({userId: req.user._id})
+        // }
+        const data = req.user ? await Token.deleteOne({userId: req.user._id}) : null
+
+        res.status(200).send({
+            error: false,
+            message: 'Logout: OK',
+            data
+        })
 
     },
 }

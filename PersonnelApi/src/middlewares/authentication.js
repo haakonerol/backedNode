@@ -20,7 +20,7 @@ module.exports = async (req, res, next) => {
         // console.log(tokenData);
         if(tokenData) req.user = tokenData.userId
     }
-    // console.log(req.user);
+     //console.log(req.user);
     next()
 
 }
