@@ -22,6 +22,19 @@ const { dbConnection, mongoose } = require('./src/config/dbConnection')
 
 dbConnection()
 app.use(express.json())
+
+// JSON visualization
+app.use('/documents/json', (req, res)=>{
+  res.sendFile('swagger.json', {root:'.'})
+})
+// Swagger visualization:
+const swaggerUi = require('swagger-ui-express')
+const swaggerJson = require('./swagger.json')
+app.use('/documents/swagger', swaggerUi.serve, swaggerUi.setup(swaggerJson, {swaggerOptions: { persistAuthorization: true }}))
+
+// Redoc visualization:
+const redoc = require('redoc-express')
+app.use('/documents/redoc', redoc({specUrl:'/documents/json', title: 'Redoc UI'}))
 /* ------------------------------------------------------------ */
 app.use(require('./src/middlewares/logger'))
 app.use(require('./src/middlewares/authentication'))
