@@ -17,6 +17,7 @@ require('dotenv').config()
 const PORT = process.evn?.PORT || 8000
 
 require('express-async-errors')
+
 /* ------------------------------------------------------------ */
 // Connect to DB:
 const {dbConnection} = require('./src/configs/dbConnection')
@@ -29,6 +30,11 @@ app.use(express.json());
 app.use(require('./src/middlewares/logger'))
 
 app.use(require('./src/middlewares/queryHandler'))
+
+/* ------------------------------------------------------------ */
+// Ruotes: 
+
+
 
 /* ------------------------------------------------------------ */
 // errorHandler:
