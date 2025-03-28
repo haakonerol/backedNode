@@ -60,7 +60,7 @@ app.use('/personnels', require('./src/routes/personnelRouter'))
 /* ------------------------------------------------------------ */
 app.use(require('./src/middlewares/errorHandler'))
 /* ------------------------------------------------------------ */
-app.listen(PORT, () => console.log(`Running: ${HOST}: ${PORT}`))
+app.listen(PORT, () => console.log(`Running: ${HOST}:${PORT}`))
 /* ------------------------------------------------------------ *
 
 // sync: 
