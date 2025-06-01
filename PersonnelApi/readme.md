@@ -1,0 +1,33 @@
+### Folder/File Structure:
+
+```
+    .env
+    .gitignore
+    index.js
+    readme.md
+    src/
+        config/
+            dbConnection.js
+        controllers/
+            authController.js
+            departmentController.js
+            personnelController.js
+            tokenControllers
+        helpers/
+            passwordEncrypt.js
+        middlewares/
+            errorHandler.js
+            authentication.js
+            permission.js
+            logger.js
+            findSearchSortPage.js
+        models/
+            departmentModel.js
+            tokenModel.js
+            personnelModel.js
+        routes/
+            authRouter.js
+            departmentRouter.js
+            personnelRouter.js
+            tokenRouter.js
+```
